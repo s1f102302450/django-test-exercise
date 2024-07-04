@@ -46,7 +46,7 @@ class TaskModeTestCase(TestCase):
 
     def test_is_over_none(self):
         current = timezone.make_aware(datetime(2024, 7, 1, 0, 0, 0))
-        task = Task(title='task1', due_at=due)
+        task = Task(title='task1')
         task.save()
 
         self.assertFalse(task.is_overdue(current))
