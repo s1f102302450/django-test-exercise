@@ -3,10 +3,12 @@ from django.utils import timezone
 from datetime import datetime
 from todo.models import Task
 
+
 # Create your tests here.
 class SampleTestCase(TestCase):
     def test_sample(self):
         self.assertEqual(1 + 2, 3)
+
 
 class TaskModeTestCase(TestCase):
     def test_sreate_task1(self):
@@ -51,6 +53,7 @@ class TaskModeTestCase(TestCase):
 
         self.assertFalse(task.is_overdue(current))
 
+
 class TodoViewTestCase(TestCase):
     def test_index_get(self):
         client = Client()
@@ -89,7 +92,7 @@ class TodoViewTestCase(TestCase):
         task2.save()
         client = Client()
         response = client.get('/?order=post')
-        
+
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, 'todo/index.html')
         self.assertEqual(response.context['tasks'][0], task2)
